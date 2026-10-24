@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "brand-reference-scout",
+  "version": "0.1.0",
+  "description": "Find B-roll that fits your existing campaigns, then choose it in a private two-up review.",
+  "author": {"name": "Paul Schmidt"},
+  "license": "MIT",
+  "repository": "https://github.com/qaulv/brand-reference-scout",
+  "keywords": ["b-roll", "brand", "campaign", "archival-footage", "visual-references"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Brand Reference Scout",
+        "shortDescription": "B-roll matched to your brand",
+        "longDescription": "Bring brand context, campaign examples and a concrete brief. Scout uses your current agent and existing footage sources to curate ten playable B-roll references, then opens a private review with selections and sourced exports.",
+        "developerName": "Paul Schmidt",
+        "category": "Productivity",
+        "logo": "./skills/brand-reference-scout/assets/plugin-icon.svg",
+        "composerIcon": "./skills/brand-reference-scout/assets/plugin-icon.svg",
+        "capabilities": ["Read", "Write", "Interactive"],
+        "defaultPrompt": ["Find B-roll for my campaign from my brand and previous work."]
+      }
+    }
+  }
+}

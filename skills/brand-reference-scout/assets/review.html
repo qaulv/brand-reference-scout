@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="description" content="Private two-up B-roll reference review">
+    <title>Brand Reference Scout</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="review-app">
+      <div class="initial-loading" role="status">Loading review…</div>
+    </div>
+    <script type="application/json" id="review-session">__SCOUT_SESSION_JSON__</script>
+    <script type="application/json" id="review-context">__SCOUT_CONTEXT_JSON__</script>
+    <script type="application/json" id="review-pool">__SCOUT_POOL_JSON__</script>
+    <script src="review-pool.js" data-optional-pool onerror="this.remove()"></script>
+    <script src="review.js"></script>
+  </body>
+</html>

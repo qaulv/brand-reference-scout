@@ -1,0 +1,17 @@
+trials/
+.cache/
+__pycache__/
+*.pyc
+.DS_Store
+dist/
+private/
+.env
+.env.*
+!.env.example
+review-session.json
+review-decisions.json
+*.mp4
+*.mov
+*.webm
+*.zip
+*.tar.gz

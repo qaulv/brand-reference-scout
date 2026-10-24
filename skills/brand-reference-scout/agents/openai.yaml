@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brand Reference Scout"
+  short_description: "Find B-roll that fits your existing campaigns"
+  default_prompt: "Use $brand-reference-scout to analyse my brand and campaign references, find ten B-roll clips for my brief, and open a private two-up review."

@@ -1,0 +1,10 @@
+{
+  "name": "brand-reference-scout-local",
+  "interface": {"displayName": "Brand Reference Scout"},
+  "plugins": [{
+    "name": "brand-reference-scout",
+    "source": {"source": "local", "path": "./"},
+    "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
+    "category": "Productivity"
+  }]
+}
