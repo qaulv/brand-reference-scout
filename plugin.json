@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "brand-reference-scout",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Find B-roll that fits your existing campaigns, then choose it in a private two-up review.",
   "author": {"name": "Paul Schmidt"},
   "license": "MIT",

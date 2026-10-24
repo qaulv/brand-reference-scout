@@ -1054,6 +1054,12 @@
       '</section>';
   }
 
+  function nextRoundActionMarkup(roundInfo) {
+    return roundInfo && roundInfo.canNext
+      ? '<button type="button" class="text-button result-next-button" data-action="next-round">Next ten</button>'
+      : '';
+  }
+
   function renderResultView(session, state, shortlist, notes, roundInfo) {
     shortlist = Array.isArray(shortlist) ? shortlist : deriveShortlist(session, state);
     notes = isObject(notes) ? notes : state.notes;
@@ -1063,12 +1069,13 @@
     var cards = shortlist.map(function renderShortlistClip(clip, index) {
       return renderClipCard(clip, cardState, String(index + 1).padStart(2, '0'));
     }).join('');
+    var nextRoundAction = nextRoundActionMarkup(roundInfo);
     var countLabel = shortlist.length === 1 ? '1 clip selected' : shortlist.length + ' clips selected';
     var emptyCopy = 'No clips kept. This review is complete; you can revisit the pair choices or export the empty shortlist.';
     return '<section class="result-view" aria-labelledby="result-title" tabindex="-1">' +
       '<div class="result-heading"><div><p class="eyebrow">' + (state.finished ? 'Shortlist ready' : 'Review complete') + '</p><h2 id="result-title">' + escapeHtml(countLabel) + '</h2><p>' + escapeHtml(shortlist.length ? 'Your selected clips are ready to inspect, annotate, and export.' : emptyCopy) + '</p></div>' +
       '<div class="result-actions"><button type="button" class="text-button result-review-button" data-action="review-choices">Review choices</button><button type="button" class="text-button result-copy-button" data-action="copy-shortlist">Copy shortlist</button>' +
-      '<button type="button" class="text-button result-next-button" data-action="next-round"' + (roundInfo.canNext ? '' : ' disabled') + '>Next ten</button></div></div>' +
+      nextRoundAction + '</div></div>' +
       (shortlist.length ? '<div class="result-grid">' + cards + '</div>' : '<div class="result-empty" role="status"><p>' + escapeHtml(emptyCopy) + '</p></div>') +
       '<p class="result-pool-status" role="status">' + escapeHtml(roundInfo.poolMessage || (roundInfo.canNext ? 'A fresh ten will be ranked from the prepared unseen pool using this round’s keep and discard signals.' : '')) + '</p>' +
       '<div class="result-footer"><div><p class="eyebrow">' + (state.finished ? 'Saved shortlist' : 'Next step') + '</p><p>' + (state.finished ? 'Your source links, original intervals, rights notes, and clip notes are preserved in the exports.' : 'Finish the shortlist when these selections are ready to hand off.') + '</p></div>' +
@@ -1146,7 +1153,7 @@
     var poolValidation = poolManifest ? validatePoolManifest(session, poolManifest) : { valid: false, errors: [] };
     var poolProblem = poolManifest && !poolValidation.valid
       ? 'Prepared candidate pool could not be used: ' + poolValidation.errors.join(' ')
-      : (!poolManifest ? 'No prepared candidate pool is available for a fresh ten.' : '');
+      : (!poolManifest ? 'No additional prepared clips are available in this review.' : '');
     var state = loadState(session, storage, function onReadError() {
       storageWarning = true;
       statusMessage = 'Saved review could not be restored. Starting a fresh state; export or choose again.';
@@ -1579,6 +1586,7 @@
     buildMarkdownExport: buildMarkdownExport,
     exportMarkdown: buildMarkdownExport,
     clampPreviewTime: clampPreviewTime,
+    nextRoundActionMarkup: nextRoundActionMarkup,
     compactContextText: compactContextText,
     contextValues: contextValues,
     pairChoiceLabel: pairChoiceLabel,

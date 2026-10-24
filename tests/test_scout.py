@@ -37,9 +37,9 @@ class PreparationTests(unittest.TestCase):
                                *(['--analysis', str(self.root / 'analysis.md')] if include_analysis else []),
                                *extra], capture_output=True, text=True)
 
-    def pool_records(self, local_preview=None):
+    def pool_records(self, local_preview=None, count=20):
         records = []
-        for i in range(20):
+        for i in range(count):
             records.append(dict(id=f'pool-{i}', title=f'Pool film {i}',
                                 preview_url=local_preview or f'https://example.org/pool-{i}.mp4',
                                 poster_url=None,
@@ -197,6 +197,17 @@ class PreparationTests(unittest.TestCase):
         self.assertNotIn('__SCOUT_POOL_JSON__', html)
         self.assertIn(manifest['pool_fingerprint'], html)
         self.assertIn('review-pool.js', html)
+
+    def test_ten_clip_pool_can_prepare(self):
+        result = self.invoke_pool({'clips': self.pool_records(count=10)})
+        self.assertEqual(result.returncode, 0, result.stderr)
+        manifest = json.loads((self.root / 'review/review-pool.json').read_text())
+        self.assertEqual(len(manifest['clips']), 10)
+
+    def test_nineteen_clip_pool_is_rejected(self):
+        result = self.invoke_pool({'clips': self.pool_records(count=19)})
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('ten or twenty', result.stderr.lower())
 
     def test_replacing_pool_removes_obsolete_pool_media(self):
         (self.root / 'pool-preview.mp4').write_bytes(b'old pool media')

@@ -18,10 +18,11 @@ a static review; it does not analyse media or discover footage itself.
   `{ "brand_read": "…", "ad_target": "…" }`. Both values must be nonempty
   strings of at most 100 whitespace-delimited words. This context is display
   data only and is not part of the root session fingerprint.
-- `--pool`: optional JSON object containing exactly twenty additional, unseen
-  clips under `clips`, plus optional `initial_annotations` keyed by an existing
-  root clip ID. Annotation `tags` and `features` values are arrays of nonempty
-  strings. Pool clips may also carry those optional arrays.
+- `--pool`: optional JSON object containing exactly ten or twenty additional,
+  unseen clips under `clips` (one or two prepared review batches), plus optional
+  `initial_annotations` keyed by an existing root clip ID. Annotation `tags` and
+  `features` values are arrays of nonempty strings. Pool clips may also carry
+  those optional arrays.
 
 Clip example:
 
@@ -59,7 +60,9 @@ records the source's assertion and is not a new clearance decision.
 An optional pool has the same URL, interval, rights and local-media validation as
 the root catalog. Pool IDs, canonical source intervals and canonical source-media
 intervals cannot repeat root or pool records. The pool is an upfront candidate
-set for a later shortlist; it does not change the ten-record root session.
+set for a later shortlist; it does not change the ten-record root session. The
+review supports at most three rounds: the root ten plus one additional ten-clip
+batch, or two additional batches when a twenty-clip pool is supplied.
 
 ## Outputs
 
@@ -87,7 +90,7 @@ When `--pool` is supplied, preparation also writes `review-pool.json` and
   "root_session_id": "scout-…",
   "root_fingerprint": "…",
   "pool_fingerprint": "…",
-  "clips": ["twenty normalized clip records"],
+  "clips": ["ten or twenty normalized clip records"],
   "initial_annotations": {"root-clip-id": {"tags": ["…"], "features": ["…"]}}
 }
 ```

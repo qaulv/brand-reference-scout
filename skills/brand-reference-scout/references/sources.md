@@ -3,6 +3,12 @@
 Use the smallest existing tool/workflow that supplies the actual reference.
 Do not install or redistribute third-party skills implicitly.
 
+For a historical progression, search intermediate eras explicitly and verify
+dates against item metadata. A source collection is not a single visual style:
+avoid building a batch from many near-identical intervals of the same film.
+Cache compact metadata and batch independent retrievals before asking the model
+to assess the useful candidates.
+
 ## Internet Archive
 
 The [Internet Archive agent skill](https://github.com/internetarchive/internet-archive-skills)

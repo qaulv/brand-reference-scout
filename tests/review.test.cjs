@@ -342,6 +342,11 @@ test('context presentation uses short supplied copy and falls back only to the l
   assert.match(review.compactContextText(longCopy), /…$/);
 });
 
+test('no-pool results do not render a dead Next ten control', () => {
+  assert.equal(review.nextRoundActionMarkup({ canNext: false }), '');
+  assert.match(review.nextRoundActionMarkup({ canNext: true }), /data-action="next-round"/);
+});
+
 test('finish requires every pair and marks the shortlist ready', () => {
   const session = makeSession();
   let state = review.createInitialState(session);

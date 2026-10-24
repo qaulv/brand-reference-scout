@@ -57,9 +57,23 @@ browser/search tools otherwise. Do not add a paid dependency or configure accoun
 Use available Internet Archive and Destockd discovery skills. If absent, use the
 host's existing browser/search tools with [source guidance](references/sources.md).
 The source skills are separate dependencies; this package does not redistribute them.
-Start with one or two productive queries and curate ten useful clips. When the
-user requests iterative selection, prepare up to twenty additional unseen clips
-once as an optional pool. Do not perform new searches on every browser choice.
+Start with one or two productive queries. For the normal iterative review, curate
+ten initial clips and twenty additional unseen clips once as a prepared pool.
+Use a ten-only review when the user explicitly wants a quick first pass, or when
+the available material cannot support a credible pool; explain that boundary
+before opening the review. Do not promise Next ten without the prepared pool.
+Do not perform new searches on every browser choice.
+
+Check source breadth before delivery. Prefer at least four distinct source works
+in the initial ten and avoid taking more than three intervals from one film,
+unless the brief specifically calls for that film or campaign. For a progression
+across eras, inspect intermediate periods as well as old and current footage.
+Record dates only when supported by source metadata; do not infer an era from
+the appearance of a clip. Explain a coverage gap instead of filling it with repeats.
+
+Keep discovery compact: batch independent metadata requests, cache useful results,
+and use scripts for preview preparation. Return concise source records and selected
+frames to the model rather than full HTML, transcripts or repeated metadata dumps.
 Consult Library of Congress for archival breadth, Eyecandy for technique vocabulary,
 and Public Work for visual inspiration when it helps the job. Inspiration images
 are not downloadable B-roll. Don't crawl every source by default.
@@ -98,7 +112,7 @@ python3 scripts/scout.py prepare --brand /work/BRAND.md \
 Include `--context /work/context.json` to display the brand read and ad target.
 For a prepared next-ten flow, add `--pool /work/pool.json`. It produces a separate
 root-bound manifest and leaves an existing initial session unchanged. The pool
-contains twenty unseen clips plus annotations for the initial ten; follow the
+contains ten or twenty unseen clips plus annotations for the initial ten; follow the
 [session contract](references/session-contract.md) exactly.
 
 This renders one reusable static template; do not regenerate the UI per campaign.

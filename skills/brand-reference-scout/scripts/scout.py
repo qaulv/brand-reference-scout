@@ -141,6 +141,9 @@ def source_identity(url):
                                    urllib.parse.urlencode(query), ''))
 
 
+POOL_SIZES = frozenset({10, 20})
+
+
 GENERATED_OUTPUT_NAMES = frozenset({
     'index.html', 'style.css', 'review.js', 'review-session.json',
     'review-pool.json', 'review-pool.js', 'media',
@@ -256,8 +259,8 @@ def _read_pool(path, root_ids, seen, source_intervals, media_intervals):
         raw_annotations = value.get('initial_annotations', value.get('annotations', value.get('initial')))
     else:
         records, raw_annotations = None, None
-    if not isinstance(records, list) or len(records) != 20:
-        raise ValueError('A candidate pool requires exactly twenty additional curated clips')
+    if not isinstance(records, list) or len(records) not in POOL_SIZES:
+        raise ValueError('A candidate pool requires exactly ten or twenty additional curated clips')
     clips, seen, source_intervals, media_intervals = _normalise_clips(
         records, pool_path.parent, seen, source_intervals, media_intervals, include_annotations=True)
     annotations = _normalise_initial_annotations(raw_annotations, root_ids)
@@ -293,7 +296,7 @@ def _validate_pool_manifest(session, manifest):
         raise ValueError('Candidate pool belongs to a different review fingerprint')
     clips = manifest.get('clips')
     annotations = manifest.get('initial_annotations', {})
-    if not isinstance(clips, list) or len(clips) != 20 or not isinstance(annotations, dict):
+    if not isinstance(clips, list) or len(clips) not in POOL_SIZES or not isinstance(annotations, dict):
         raise ValueError('Invalid review pool contents')
     if manifest.get('pool_fingerprint') != pool_fingerprint(clips, annotations):
         raise ValueError('Candidate pool fingerprint does not match its contents')
@@ -673,7 +676,7 @@ def main():
     for option in ('brand', 'campaigns', 'brief', 'catalog', 'out'):
         command.add_argument('--' + option, required=True)
     command.add_argument('--analysis', required=True, help='Compact campaign analysis supplied by the host agent')
-    command.add_argument('--pool', help='Optional JSON file containing twenty additional review candidates')
+    command.add_argument('--pool', help='Optional JSON file containing ten or twenty additional review candidates (one or two batches)')
     command.add_argument('--context', help='Optional JSON file with short brand_read and ad_target copy')
     command.add_argument('--title')
     command.set_defaults(run=prepare)

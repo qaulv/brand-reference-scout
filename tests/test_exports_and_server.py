@@ -110,6 +110,21 @@ class ExportTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Invalid clip'):
             scout.markdown(self.session, decisions, pool)
 
+    def test_ten_clip_pool_export_uses_validated_pool_source(self):
+        pool_clips = [dict(id=f'pool-light-{i}', title=f'Pool light study {i}', source_url=f'https://pool.example/light-{i}',
+                           source_media_url=f'https://cdn.pool.example/light-{i}.mp4',
+                           start=30 + i, end=45 + i, preview_start=0, preview_end=15,
+                           preview_url=f'media/light-{i}.mp4', poster_url=None,
+                           fit='A pool candidate.', observed='Pool observation.',
+                           rights=dict(status='unverified', text='Pool evidence.', url=None)) for i in range(10)]
+        pool_clips[0]['id'] = 'pool-light'
+        pool = scout._pool_manifest(self.session, pool_clips, {})
+        decisions = dict(version=1, session_id='session', session_fingerprint=self.session['fingerprint'],
+                         pool_fingerprint=pool['pool_fingerprint'], decisions={'pool-light': 'keep'}, notes={})
+        output = scout.markdown(self.session, decisions, pool)
+        self.assertIn('## Pool light study', output)
+        self.assertIn('https://pool.example/light-0', output)
+
 
 class MediaServerTests(unittest.TestCase):
     @classmethod

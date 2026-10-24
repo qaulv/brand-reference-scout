@@ -11,6 +11,9 @@ original intervals and rights evidence.
 The host model handles interpretation and discovery. Selection runs in the browser
 without AI calls. This is a small agent workflow, not a new footage index or model.
 
+This release supports video B-roll. Font specimens and image references from the
+original broader plan are not implemented yet; books and audio also remain pending.
+
 ## Use from a repository copy
 
 Open this folder in your coding agent and say:
@@ -107,13 +110,15 @@ the current browser. Undo restores the previous pair. Completion shows the kept
 clips and attempts to copy the sourced shortlist to your clipboard; a visible
 copy button remains available if the browser denies automatic copying.
 
-An optional prepared pool supplies up to two further batches of ten unseen clips.
+The normal iterative workflow prepares a pool for one or two further batches of
+ten unseen clips. A quick ten-only review is available when requested; it ends at
+that shortlist and does not promise another batch.
 The page ranks that pool using shared visual tags from keeps and discards. This
 is a transparent local heuristic, with no model calls per choice. It does not
 search the web itself: when the pool is exhausted, a new agent search is needed.
 JSON and Markdown exports preserve the cumulative shortlist. Import matching
 JSON to resume on another device. To prepare this flow, pass `--pool /path/to/pool.json`
-to `prepare`; the pool contains twenty inspected records and annotations for
+to `prepare`; the pool contains ten or twenty inspected records and annotations for
 the initial ten. See the [session contract](skills/brand-reference-scout/references/session-contract.md).
 
 For validation and a fresh Markdown export in the agent:
