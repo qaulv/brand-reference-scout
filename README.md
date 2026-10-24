@@ -3,10 +3,14 @@
 Find B-roll that fits the work you've already made.
 
 Bring **brand context**, **campaign examples**, and a **specific job brief**. Your
-agent inspects the work once, uses existing footage sources to curate ten clips,
+agent inspects the work once, searches Internet Archive for the best matching clips,
 and opens a private two-up review. Keep left, both, right or neither; the next
 pair appears immediately. Finish with a shortlist containing source links,
 original intervals and rights evidence.
+
+Match the supplied brand, references and brief—not a preset vintage aesthetic.
+Internet Archive is the default footage source; generic stock libraries are used
+only when explicitly requested. Sparse results are disclosed rather than padded.
 
 The host model handles interpretation and discovery. Selection runs in the browser
 without AI calls. This is a small agent workflow, not a new footage index or model.
@@ -150,9 +154,10 @@ review directory as an owner-private static Site. It works without a model servi
 or custom backend. The local browser option requires no Sites account. The CLI
 itself does not publish.
 
-Reuse available Internet Archive and Destockd discovery skills; their installation
-and licensing are separate. Host browser/search tools can follow the same sources
-when those skills aren't installed. Library of Congress adds archival breadth;
+Reuse an available Internet Archive discovery skill; its installation and licensing
+are separate. Host browser/search tools can follow the same source when it isn't
+installed. Destockd can help discover original Archive items. Library of Congress
+is available when the user requests sources beyond Internet Archive;
 Eyecandy and Public Work supply visual inspiration. See the skill's source guide.
 Context/hackathon web-data tools are optional helpers for extracting brand/campaign
 webpages when connected. The basic workflow requires no extra API key or paid model.

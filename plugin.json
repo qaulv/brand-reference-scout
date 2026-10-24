@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "brand-reference-scout",
-  "version": "0.1.1",
-  "description": "Find B-roll that fits your existing campaigns, then choose it in a private two-up review.",
+  "version": "0.1.2",
+  "description": "Find Internet Archive footage that fits your brand and campaign brief, then choose it in a private two-up review.",
   "author": {"name": "Paul Schmidt"},
   "license": "MIT",
   "repository": "https://github.com/qaulv/brand-reference-scout",
@@ -12,7 +12,7 @@
       "interface": {
         "displayName": "Brand Reference Scout",
         "shortDescription": "B-roll matched to your brand",
-        "longDescription": "Bring brand context, campaign examples and a concrete brief. Scout uses your current agent and existing footage sources to curate ten playable B-roll references, then opens a private review with selections and sourced exports.",
+        "longDescription": "Bring brand context, campaign examples and a concrete brief. Scout searches Internet Archive for the best visual matches, without imposing an era or vintage look, then opens a private review with selections and sourced exports. Stock footage is used only when explicitly requested.",
         "developerName": "Paul Schmidt",
         "category": "Productivity",
         "logo": "./skills/brand-reference-scout/assets/plugin-icon.svg",

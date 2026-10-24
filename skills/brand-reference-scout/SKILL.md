@@ -54,8 +54,17 @@ browser/search tools otherwise. Do not add a paid dependency or configure accoun
 
 ## Source and curate
 
-Use available Internet Archive and Destockd discovery skills. If absent, use the
-host's existing browser/search tools with [source guidance](references/sources.md).
+Find the best visual match to the supplied brand, campaign references and brief
+within Internet Archive. Search its collections by the literal subjects, materials,
+composition, motion and mood observed in those inputs. Do not impose a vintage
+look, a particular era or a preferred collection such as Prelinger.
+Do not use Pexels, Mixkit or other stock libraries unless the user explicitly
+requests them. Do not reuse a stock-based cached catalog for an Archive-only job.
+If suitable Archive footage is unavailable or too sparse, explain the gap; never
+silently substitute stock, lower the fit threshold or pad the batch with repeats.
+
+Use an available Internet Archive discovery skill. If absent, use the host's
+existing browser/search tools with [source guidance](references/sources.md).
 The source skills are separate dependencies; this package does not redistribute them.
 Start with one or two productive queries. For the normal iterative review, curate
 ten initial clips and twenty additional unseen clips once as a prepared pool.
@@ -74,9 +83,10 @@ the appearance of a clip. Explain a coverage gap instead of filling it with repe
 Keep discovery compact: batch independent metadata requests, cache useful results,
 and use scripts for preview preparation. Return concise source records and selected
 frames to the model rather than full HTML, transcripts or repeated metadata dumps.
-Consult Library of Congress for archival breadth, Eyecandy for technique vocabulary,
-and Public Work for visual inspiration when it helps the job. Inspiration images
-are not downloadable B-roll. Don't crawl every source by default.
+Eyecandy and Public Work may help interpret visual vocabulary when relevant, but
+they are inspiration rather than footage sources for this workflow. Use footage
+outside Internet Archive only when explicitly requested. Don't crawl every source
+by default.
 
 Inspect actual footage, not just titles. Find a useful interval, confirm playback
 and bounds, and record what is visible. Preserve original source links and rights

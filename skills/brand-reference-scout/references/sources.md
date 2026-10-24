@@ -3,6 +3,12 @@
 Use the smallest existing tool/workflow that supplies the actual reference.
 Do not install or redistribute third-party skills implicitly.
 
+Internet Archive is the default footage source. Rank candidates by visual fit to
+the supplied brand, campaign references and brief, not by collection or age.
+Do not use generic stock libraries (including Pexels and Mixkit), or reuse their
+cached clips, unless the user explicitly requests stock. Explain missing coverage
+instead of switching sources or filling ten slots with weak matches.
+
 For a historical progression, search intermediate eras explicitly and verify
 dates against item metadata. A source collection is not a single visual style:
 avoid building a batch from many near-identical intervals of the same film.
@@ -14,15 +20,17 @@ to assess the useful candidates.
 The [Internet Archive agent skill](https://github.com/internetarchive/internet-archive-skills)
 uses the `ia` CLI. It is separately distributed under AGPL-3.0; this package does
 not copy or bundle it. If installed, use its search and download workflow.
-Otherwise the host can use public read endpoints with no key:
+Otherwise the host can use the [developer documentation](https://archive.org/developers/)
+and public read endpoints with no key:
 
 - Search: `https://archive.org/advancedsearch.php?q=...&output=json&rows=20`.
 - Metadata/files: `https://archive.org/metadata/{identifier}`.
 - Stable source: `https://archive.org/details/{identifier}`.
 - Stable file: `https://archive.org/download/{identifier}/{filename}`.
 
-Start with Prelinger for archival footage; narrow to the campaign's literal
-subjects. Metadata matches need actual video inspection. Preserve item-level
+Search by the campaign's literal subjects and observed visual qualities across
+relevant Archive collections. Prelinger is one possible collection, not a default
+look or mandatory starting point. Metadata matches need actual video inspection. Preserve item-level
 license/rights fields. Avoid transient archive data-node URLs. Follow the Archive's
 [automated-access guidance](https://archive.org/developers/bots.html).
 
@@ -31,6 +39,8 @@ license/rights fields. Avoid transient archive data-node URLs. Follow the Archiv
 [Destockd](https://www.destockd.com/#/collections) offers shot-level visual search,
 similar shots and clip downloads from FedFlix, with archival source links.
 Search visible subjects/actions rather than abstract brand adjectives.
+Use it as an optional discovery aid only when the selected footage resolves to an
+original Internet Archive item; preserve that original source in the catalog.
 
 The [existing Destockd footage skill](https://github.com/redactedCHAD/destockd-footage-skill)
 can be used when separately available. No license was detected during assessment;
@@ -43,7 +53,8 @@ Retain [source/rights evidence](https://www.destockd.com/#/legal).
 ## Supplementary sources
 
 - [Library of Congress](https://www.loc.gov/film-and-videos/): archival breadth;
-  use its [documented JSON API](https://www.loc.gov/apis/json-and-yaml/) or browsing.
+  use only when the user requests sources beyond Internet Archive. Use its
+  [documented JSON API](https://www.loc.gov/apis/json-and-yaml/) or browsing.
   Playback access alone does not determine reuse rights.
 - [Eyecandy](https://eyecannndy.com/): technique and visual-language inspiration.
   Follow original creator/source links; examples are not a blanket stock license.
