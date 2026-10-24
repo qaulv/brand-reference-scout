@@ -11,6 +11,15 @@ original intervals and rights evidence.
 The host model handles interpretation and discovery. Selection runs in the browser
 without AI calls. This is a small agent workflow, not a new footage index or model.
 
+Works with **GPT-6 Luna at high reasoning**. A fresh trial on The Pickle Company
+read the real brand site, inspected its imagery, discovered ten distinct source
+clips and prepared a playable review. Creative fit still needs human judgment.
+No model calls happen while choosing clips. As a pricing comparison, the recorded
+On trial's token counts would cost about **$0.09 on GPT-6 Luna** at Standard API
+rates with the same cache hits, before cache-write or tool charges. That is an
+estimate, not the measured bill for the Luna trial. See
+[API pricing](https://developers.openai.com/api/docs/pricing).
+
 This release supports video B-roll. Font specimens and image references from the
 original broader plan are not implemented yet; books and audio also remain pending.
 
